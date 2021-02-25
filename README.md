@@ -1,5 +1,5 @@
-# audio_annotator_generic
-Annotate video shots of a video
+# audio_annotator
+Annotate Audio/Speech
 
 ![APM](https://img.shields.io/apm/l/vim-mode)
 [![Generic badge](https://img.shields.io/badge/python->=3-green.svg)](https://shields.io/)
