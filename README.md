@@ -39,5 +39,5 @@ Under the ./users direcroty you can find the users.txt file which contains the e
 Under the static folder you can find the Annotated directory which contains a {email}.txt file for each user with the annotated audios.
 
 Under the static folder you can find the Audio directory which contains the dataset.
-=======
+
 
