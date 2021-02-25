@@ -1,0 +1,33 @@
+{% extends "layouts.html" %}
+{% block heading %}
+<div class="navbar-header">
+                    <a class="navbar-brand" href="{{ url_for('home') }}" >VAT</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><p class="navbar-text" >{{user}}</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{url_for('login')}}" >Sign In</a></li>
+                    <li><a href="{{url_for('register')}}" >Sign Up</a></li>
+                </ul>
+{% endblock %}
+
+{% block content %}
+
+        <h1>Welcome to the Audio Annotator</h1>
+        <p>The purpose of the specific web app is to randomly show recorded speeches to annotators, in order to choose the corresponding recording class.</p>
+
+        <h2>How to use:</h2>
+        <span>
+            First you have to log in, if you have not already singed up, in order to know the annotator's profile.<br>
+            Then, you have to hear a randomly selected audio and you have to provide the class
+            that better describes the current audio.<br>
+            The more audio you annotate, the better dataset is made.
+        </span>
+        <br>
+        <br>
+        <h2> Guidelines </h2>
+        <span>
+            For more information regarding the audio classes please consult <a href="https://docs.google.com/document/d/1ia-Pea1z3SOJwSh_082DDzGZFo1cLz6-lY6m0sddDtc/edit#" >this document</a>.
+        </span>
+{% endblock %}
