@@ -31,7 +31,7 @@ function proceed(){
 {% endblock %}
 {% block content %}
 <h2>Annotating Audio</h2>
-<p>Audio Name: {{filename.split('/')[1]}}</p>
+<!--<p>Audio Name: {{filename.split('/')[1]}}</p> -->
 <div class="container">
     <div class="row" >
         <div class="col">
@@ -43,8 +43,8 @@ function proceed(){
         <br>
         <div class="col">
             <label for="labels">Labels' description:</label>
-                {% for key in classes %}
-                    <p>{{key}} {{classes[key]}}</p>
+                {% for key in classes|sort%}
+            <p><strong>{{key}}</strong> {{classes[key]}}</p>
                 {% endfor %}
         </div>
     </div>
@@ -53,7 +53,7 @@ function proceed(){
                 <div class="col col-lg-4">
                   <label for="labels">Choose Label:</label>
                       <select name="labels" id="labels">
-                          {% for key in classes %}
+                          {% for key in classes|sort %}
                             <option value="{{key}}">{{key}}</option>
                           {% endfor %}
                       </select>
