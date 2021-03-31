@@ -30,40 +30,83 @@ function proceed(){
             </div>
 {% endblock %}
 {% block content %}
-<h2>Annotating Audio</h2>
+<h2 style="text-align: center;">Annotating Audio</h2>
+<p style="text-align: center;"><span style="color: #0000cc">Listen to the speech that follows and then rate it according to the three classes:</span></p>
+<br>
 <!--<p>Audio Name: {{filename.split('/')[1]}}</p> -->
 <div class="container">
-    <div class="row" >
-        <div class="col">
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-2">
             <video id="video" width="640" height="48" controls>
                 <source src={{ url_for("static", filename=filename) }} type="video/mp4">
                 Your browser does not support the audio tag.
             </video>
         </div>
-        <br>
-        <div class="col">
-            <label for="labels">Labels' description:</label>
-                {% for key in classes|sort%}
-            <p><strong>{{key}}</strong> {{classes[key]}}</p>
-                {% endfor %}
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-sm-4">
+            <label for="labels1">Expressive:</label>
+            <p>How <strong>expressive</strong> (i.e. energetic, emotional, passionate) do you think the speech is? (regardless of the content)</p>
+        </div>
+        <div class="col-sm-4">
+            <label for="labels2">Easy to follow:</label>
+            <p>How <strong>easy</strong> is it <strong>to follow</strong> the speech, given the verbal clarity,
+                the fluency and the rate of speech for the particular content being described? <br>
+                (<span style="color: #ff0000">Note</span>: Fluency, clarity and rate can be interconnected and correlated, e.g. one speaker can make his speech very easy to follow,
+                despite the fact that he speaks very fast,
+                while another speaker can speak slow and yet not making his speech easy to follow) </p>
+        </div>
+        <div class="col-sm-4">
+            <label for="labels3">Enjoy:</label>
+            <p>Did you <strong>enjoy</strong> listening to that speech (was the speech engaging, entertaining, motivating or compelling)?</p>
         </div>
     </div>
-<div class="row">
-            <form name='class-select' method="post"  action="{{ url_for('finish') }}" >
-                <div class="col col-lg-4">
-                  <label for="labels">Choose Label:</label>
-                      <select name="labels" id="labels">
-                          {% for key in classes|sort %}
-                            <option value="{{key}}">{{key}}</option>
+
+    <form name='class-select' method="post"  action="{{ url_for('finish') }}" >
+    <div class="row">
+
+        <div class="col-sm-4">
+                <!--<div class="col col-lg-4"> -->
+                  <label for="labels1">Choose Label:</label>
+                      <select name="labels1" id="labels1">
+                          {% for key in classes[0]|sort %}
+                          <option value="{{key}}">{{key}}. {{classes[0][key]}}</option>
                           {% endfor %}
                       </select>
-                </div>
-                <div class="col col-lg-4">
-                    <button type="submit" class="btn btn-primary" >Finish Annotation</button>
-                </div>
-            </form>
-
+        </div>
+        <div class="col-sm-4">
+                <!--<div class="col col-lg-4"> -->
+                  <label for="labels2">Choose Label:</label>
+                      <select name="labels2" id="labels2">
+                          {% for key in classes[1]|sort %}
+                            <option value="{{key}}">{{key}}. {{classes[1][key]}}</option>
+                          {% endfor %}
+                      </select>
+        </div>
+        <div class="col-sm-4">
+                <!--<div class="col col-lg-4"> -->
+                  <label for="labels3">Choose Label:</label>
+                      <select name="labels3" id="labels3">
+                          {% for key in classes[2]|sort %}
+                            <option value="{{key}}">{{key}}. {{classes[2][key]}}</option>
+                          {% endfor %}
+                      </select>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col col-md-offset-5">
+            <button type="submit" class="btn btn-primary" >Finish Annotation</button>
+        </div>
+    </div>
+    </form>
+
+</div>
+
     <script type="text/javascript" src={{ url_for("static", filename="refresh.js") }} ></script>
 {% endblock %}

@@ -2,7 +2,7 @@ import os
 from flask import render_template, request, session
 from audio_annotator_generic import app
 from audio_annotator_generic import utils
-from audio_annotator_generic.config import CLASSES
+from audio_annotator_generic.config import CLASSES1,CLASSES2,CLASSES3
 
 
 
@@ -31,7 +31,7 @@ def annotate():
             return render_template('annotation.html',
                                    title="Audio Annotator Tool",
                                    username=session['username'],
-                                   classes=CLASSES,
+                                   classes=[CLASSES1,CLASSES2,CLASSES3],
                                    filename='Audio' + os.sep + session['video'])
         else:
             return render_template('profile.html',
@@ -48,10 +48,12 @@ def annotate():
 def finish():
     if request.method == 'POST':
         # save annotations
-        annotations = (request.form['labels'])
+        annotation1 = (request.form['labels1'])
+        annotation2 = (request.form['labels2'])
+        annotation3 = (request.form['labels3'])
         message = 'Congrats you have successfully Annotated {0}'.format(session["username"])
 
-        utils.add_annotation(session['username'], session['video'], annotations)
+        utils.add_annotation(session['username'], session['video'], annotation1,annotation2,annotation3)
         utils.add_video(session['username'], session['video'])
 
         annotations = []

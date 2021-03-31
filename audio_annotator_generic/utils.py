@@ -158,7 +158,7 @@ def get_random_video(diff) -> str:
     return random.choice(diff)
 
 
-def add_annotation(user, video, data) -> None:
+def add_annotation(user, video, data1,data2,data3) -> None:
     """
     Save annotations to the csv file for the current user.
 
@@ -168,7 +168,7 @@ def add_annotation(user, video, data) -> None:
         data (int): List of the annotated timestamps for the specific video
     """
     with open(DATABASE, 'a') as f:
-        f.write(str(datetime.now()) + ',' + user + ','  + video + ',' + data + '\n')
+        f.write(str(datetime.now()) + ',' + user + ','  + video + ',' + data1 + ',' + data2 + ',' + data3 + '\n')
 
 
 def create_directories():

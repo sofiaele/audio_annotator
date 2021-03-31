@@ -1,1 +1,1 @@
-Timespamp, Username, Sample_name, Class
+Timestamp,Username,Sample_name,Class1,Class2,Class3
